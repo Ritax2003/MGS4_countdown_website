@@ -1,0 +1,567 @@
+@font-face {
+  font-family: "HelveticaLocal";
+  src: url("../fonts/helvetica.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Patriots";
+  src: url("../fonts/font-of-the-patriots.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --pb-left: 7%;
+  --pb-bottom: 10%;
+  --pb-width: 360px;
+  --pb-height: 8px;
+  --pb-label-gap: 10px;
+  --pb-pct-gap: 12px;
+  --pb-pct-width: 64px;
+  --side-left: 0px;
+  --side-width: 520px;
+  --side-height: 220px;
+  --side-pad-x: 7%;
+  --side-y-offset: 0px;
+  --side-font-family: "HelveticaLocal", Helvetica, Arial, sans-serif;
+  --side-font-size: 18px;
+  --side-line-height: 1.35;
+
+  --menu-left: 20px;
+  --menu-top: 20px;
+  --menu-size: 40px;
+  --menu-panel-w: 350px;
+  --menu-panel-h: 400px;
+  --menu-line-h: 3px;
+  --menu-line-inset: 6px;
+  --menu-line-r: 2px;
+  --menu-icon-offset-x: 10px;
+  --menu-icon-offset-y: 10px;
+  --menu-icon-open-offset-x: 0px;
+  --menu-icon-open-offset-y: 0px;
+
+  --ui-accent: #f05c4e;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #000;
+  overflow: hidden;
+}
+
+#bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 900ms ease;
+  z-index: 0;
+}
+
+#bg.show {
+  opacity: 1;
+}
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+background: #000;
+  cursor: pointer;
+  user-select: none;
+  opacity: 1;
+  transition: opacity 500ms ease;
+  z-index: 3;
+  align-items: center;
+  justify-content: center;
+}
+
+#overlay.fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#message {
+  width: 600px;
+  height: 180px;
+  color: #fff;
+  font-family: "HelveticaLocal", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.35;
+  letter-spacing: 0.2px;
+  text-align: left;
+  white-space: pre-wrap;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  opacity: 0;
+  transition: opacity 900ms ease;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+#message.show {
+  opacity: 1;
+}
+
+#progressUI {
+  position: fixed;
+  left: var(--pb-left);
+  bottom: var(--pb-bottom);
+  opacity: 0;
+  transition: opacity 600ms ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+#progressUI.show {
+  opacity: 1;
+}
+
+#progressLabel {
+  font-family: "Patriots", sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: var(--ui-accent);
+  opacity: 1;
+}
+
+#progressLabel.pulse {
+  animation: installPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes installPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+#progressRow {
+  display: flex;
+  align-items: center;
+  gap: var(--pb-pct-gap);
+  margin-top: var(--pb-label-gap);
+}
+
+#progressWrap {
+  width: var(--pb-width);
+  height: var(--pb-height);
+  background: rgba(255,255,255,0.20);
+}
+
+#progressFill {
+  height: 100%;
+  width: 0%;
+  background: #fff;
+  transition: width 800ms linear;
+}
+
+#progressPercent {
+  width: var(--pb-pct-width);
+  font-family: "Patriots", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: rgba(255,255,255,0.75);
+  text-align: right;
+}
+
+#progressRemaining {
+  margin-top: 8px;
+  width: calc(var(--pb-width) + var(--pb-pct-gap) + var(--pb-pct-width));
+  font-family: "HelveticaLocal", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(255,255,255,0.75);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Mobile progress breakpoint */
+@media (max-width: 600px) {
+  #progressUI {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #message {
+    width: min(92vw, 600px);
+    height: auto;
+    max-height: 70vh;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) and (orientation: portrait) {
+  #progressUI {
+    left: 5%;
+    right: 5%;
+    transform: none;
+  }
+
+  #progressLabel {
+    font-size: 20px;
+  }
+
+  #progressRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  #progressWrap {
+    width: 100%;
+  }
+
+  #progressPercent {
+    width: 100%;
+    text-align: right;
+    font-size: 16px;
+  }
+
+  #progressRemaining {
+    width: 100%;
+    white-space: normal;
+    font-size: 14px;
+  }
+
+  #message {
+    width: calc(100vw - 40px);
+    height: auto;
+    max-height: 75vh;
+    font-size: 16px;
+  }
+}
+
+#sideUI {
+  position: fixed;
+  left: var(--side-left);
+  top: calc(50% + var(--side-y-offset));
+  transform: translateY(-50%);
+  width: var(--side-width);
+  height: var(--side-height);
+  padding-left: var(--side-pad-x);
+  padding-right: var(--side-pad-x);
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 600ms ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#sideUI.show {
+  opacity: 1;
+}
+
+#sideText {
+  width: 100%;
+  color: rgba(255,255,255,0.92);
+  font-weight: 400;
+  font-size: var(--side-font-size);
+  line-height: var(--side-line-height);
+  font-family: var(--side-font-family);
+  letter-spacing: 0.2px;
+  text-align: left;
+  white-space: pre-wrap;
+  opacity: 0;
+  transition: opacity 1500ms ease;
+}
+
+#sideText.show {
+  opacity: 1;
+}
+
+#menuToggle {
+  position: fixed;
+  line-height: 0;
+  left: calc(var(--menu-left) + var(--menu-icon-offset-x));
+  top: calc(var(--menu-top) + var(--menu-icon-offset-y));
+  width: var(--menu-size);
+  height: var(--menu-size);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: var(--ui-accent);
+  opacity: 0;
+  transition: opacity 600ms ease, transform 240ms ease, color 220ms ease;
+  pointer-events: none;
+  z-index: 4;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+
+#menuToggle.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#menuToggle:focus,
+#menuToggle:focus-visible {
+  outline: none;
+}
+
+#menuToggle::-moz-focus-inner {
+  border: 0;
+}
+
+#menuIcon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#menuIcon .bar {
+  display: block;
+  position: absolute;
+  left: var(--menu-line-inset);
+  right: var(--menu-line-inset);
+  height: var(--menu-line-h);
+  background: currentColor;
+  border-radius: var(--menu-line-r);
+  opacity: 1;
+  transition: transform 220ms ease, top 220ms ease, opacity 180ms ease;
+}
+
+#menuIcon .bar1 { top: 12px; }
+#menuIcon .bar2 { top: 19px; }
+#menuIcon .bar3 { top: 26px; }
+
+#menuToggle.open .bar1 {
+  top: 18.5px;
+  transform: rotate(45deg);
+}
+
+#menuToggle.open .bar2 {
+  opacity: 0;
+}
+
+#menuToggle.open .bar3 {
+  top: 18.5px;
+  transform: rotate(-45deg);
+}
+
+#menuPanel {
+  position: fixed;
+  left: var(--menu-left);
+  top: var(--menu-top);
+  width: var(--menu-panel-w);
+  height: var(--menu-panel-h);
+  box-sizing: border-box;
+  padding: 14px;
+  overflow: hidden;
+
+  border: 2px solid var(--ui-accent);
+  background: rgba(240, 92, 78, 0.2);
+  background: color-mix(in srgb, var(--ui-accent) 20%, transparent);
+  transform-origin: top left;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 240ms ease, opacity 240ms ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+#menuPanel.open {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+#menuPanelContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: calc(var(--menu-size) + 8px);
+  padding-bottom: 44px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 220ms ease, transform 220ms ease;
+  padding-left: 5px;
+}
+
+#menuPanel.open #menuPanelContent {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 120ms;
+}
+
+.menuItem {
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  color: rgba(255,255,255,0.85);
+  font-family: "HelveticaLocal", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: color 140ms ease;
+}
+
+.menuIconItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menuMusicToggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menuItemIcon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+}
+
+.menuItemIcon svg {
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+.menuMusicToggle .iconMuted {
+  display: none;
+}
+
+.menuMusicToggle.musicMuted .iconMuted {
+  display: block;
+}
+
+.menuMusicToggle.musicMuted .iconOn {
+  display: none;
+}
+
+.menuItemText {
+  display: block;
+}
+
+.menuVolume {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menuVolumeRow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.menuVolumeMin,
+.menuVolumeMax {
+  font-family: "HelveticaLocal", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  width: 34px;
+}
+
+.menuVolumeMin {
+  text-align: left;
+  margin-right: -15px;
+}
+
+.menuVolumeMax {
+  text-align: right;
+  margin-left: 0px;
+}
+
+.menuVolumeSlider {
+  width: 100%;
+  accent-color: var(--ui-accent);
+}
+
+
+
+
+
+.menuItem:focus,
+.menuItem:focus-visible {
+  outline: none;
+}
+
+#menuPanelDisclaimer {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 12px;
+  color: rgba(255,255,255,0.75);
+  font-family: "HelveticaLocal", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.3;
+  opacity: 0;
+  transition: opacity 220ms ease;
+  white-space: normal;
+  pointer-events: auto;
+}
+
+#menuPanelDisclaimer a,
+#menuPanelDisclaimer a:visited,
+#menuPanelDisclaimer a:hover,
+#menuPanelDisclaimer a:active,
+#menuPanelDisclaimer a:focus,
+#menuPanelDisclaimer a:focus-visible {
+  color: var(--ui-accent);
+  text-decoration: none;
+  outline: none;
+}
+
+#menuPanel.open #menuPanelDisclaimer {
+  opacity: 1;
+  transition-delay: 140ms;
+}
+
+#menuToggle.open {
+  color: #fff;
+  transform: translate(var(--menu-icon-open-offset-x), var(--menu-icon-open-offset-y));
+}
+
+.menuItem:hover {
+  color: var(--ui-accent);
+}
+
+#menuDimmer {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  transition: opacity 240ms ease;
+  pointer-events: none;
+  z-index: 5;
+}
+
+#menuDimmer.open {
+  opacity: 0.85;
+  pointer-events: auto;
+}
+
+#menuPanel {
+  z-index: 6;
+}
+
+#menuToggle {
+  z-index: 7;
+}
+
+@media (max-width: 450px) {
+  #menuPanel {
+    left: 20px;
+    right: 20px;
+    width: auto;
+  }
+}

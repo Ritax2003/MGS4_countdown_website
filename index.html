@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<!-- Mirrored from www.mgs4.site/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Mar 2026 05:36:58 GMT -->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>METAL GEAR SOLID 4 GUNS OF THE PATRIOTS | RERELEASE COUNTDOWN</title>
+  <meta name="description" content="A fan-made celebratory countdown for the rerelease of MGS4. Inspired by Nitroid" />
+  <meta property="og:description" content="A fan-made celebratory countdown for the rerelease of MGS4." />
+  <meta name="twitter:description" content="A fan-made celebratory countdown for the rerelease of MGS4." />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <div id="overlay">
+    <div id="message">
+      Ready to rerelease the game.
+      To start the countdown, click the screen.
+      (The process will take until August 27, 2026)
+    </div>
+  </div>
+
+  <div id="progressUI" aria-hidden="true">
+    <div id="progressLabel">Installing...(Compiling Shaders)</div>
+    <div id="progressRow">
+      <div id="progressWrap"><div id="progressFill"></div></div>
+      <div id="progressPercent">0%</div>
+    </div>
+    <div id="progressRemaining">0 day(s), 0 hour(s), 0 minute(s), 0 second(s) remaining</div>
+  </div>
+
+  <div id="sideUI" aria-hidden="true">
+    <div id="sideText"></div>
+  </div>
+
+  <div id="menuDimmer" aria-hidden="true"></div>
+
+  <button id="menuToggle" type="button" aria-label="Open menu" title="Menu" aria-expanded="false" aria-controls="menuPanel">
+    <span id="menuIcon" aria-hidden="true">
+      <span class="bar bar1"></span>
+      <span class="bar bar2"></span>
+      <span class="bar bar3"></span>
+    </span>
+  </button>
+  <div id="menuPanel" aria-hidden="true">
+    <div id="menuPanelContent">
+      <button class="menuItem menuMusicToggle" id="musicToggle" type="button" aria-pressed="false">
+        <span class="menuItemIcon" aria-hidden="true">
+          <svg class="iconOn" viewBox="0 0 24 24" fill="none">
+            <path d="M11 5L6 9H2v6h4l5 4V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M15.5 8.5a4 4 0 0 1 0 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M18 6a7 7 0 0 1 0 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <svg class="iconMuted" viewBox="0 0 24 24" fill="none">
+            <path d="M11 5L6 9H2v6h4l5 4V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M16 9l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M22 9l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="menuItemText" id="musicToggleText">Turn Off Music</span>
+      </button>
+
+      <div class="menuVolume">
+        <div class="menuVolumeRow">
+          <span class="menuVolumeMin">0</span>
+          <input id="musicVolume" class="menuVolumeSlider" type="range" min="0" max="100" step="1" value="100" />
+          <span class="menuVolumeMax">100</span>
+        </div>
+      </div>
+
+      <br/>
+
+      <a class="menuItem menuIconItem" id="menuOfficial" href="https://www.konami.com/mg/mc2/" target="_blank" rel="noopener noreferrer">
+        <span class="menuItemIcon" aria-hidden="true">
+          
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        
+        </span>
+        <span class="menuItemText">Official Game Website</span>
+      </a>
+
+      <a class="menuItem menuIconItem" id="menuDesktop" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3429479356" target="_blank" rel="noopener noreferrer">
+        <span class="menuItemIcon" aria-hidden="true">
+          
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+          <line x1="8" y1="21" x2="16" y2="21"></line>
+          <line x1="12" y1="17" x2="12" y2="21"></line>
+        </svg>
+        
+        </span>
+        <span class="menuItemText">Desktop Version</span>
+      </a>
+
+      <a class="menuItem menuIconItem" id="menuTipJar" href="https://ko-fi.com/mgnitroid/" target="_blank" rel="noopener noreferrer">
+        <span class="menuItemIcon" aria-hidden="true">
+          
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        
+        </span>
+        <span class="menuItemText">Tip Jar</span>
+      </a>
+
+</div>
+    <div id="menuPanelDisclaimer">A fan-made rerelease countdown, developed by <a href="https://github.com/Ritax2003/">Ritabrata</a> , inspired by <a href="https://x.com/Nitroid">Nitroid</a>.<br/>Not affiliated with Konami Digital Entertainment Co., Ltd.</div>
+  </div>
+
+<video id="bg" muted loop playsinline preload="metadata">
+    <source src="media/loop.webm" type="video/webm" />
+    <source src="media/loop.mp4" type="video/mp4" />
+  </video>
+
+  <audio id="introAudio" preload="auto">
+    <source src="audio/intro.mp3" type="audio/mpeg" />
+  </audio>
+
+  <audio id="loopAudio" preload="auto" loop>
+    <source src="audio/loop.mp3" type="audio/mpeg" />
+  </audio>
+
+  <audio id="menuOpenSfx" preload="auto">
+    <source src="audio/menu-open.mp3" type="audio/mpeg" />
+  </audio>
+
+  <audio id="menuCloseSfx" preload="auto">
+    <source src="audio/menu-close.mp3" type="audio/mpeg" />
+  </audio>
+  <audio id="menuSelectSfx" preload="auto">
+    <source src="audio/menu-select.mp3" type="audio/mpeg" />
+  </audio>
+</body>
+
+<!-- Mirrored from www.mgs4.site/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Mar 2026 05:37:56 GMT -->
+</html>

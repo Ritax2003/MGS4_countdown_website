@@ -13,10 +13,10 @@ KONAMI is not responsible for any <br />damage resulting from misuse.
 [Smoking Warning] <br />Cigarette smoke has detrimental effects <br />to you and those around you, particularly <br />infants, children, and the elderly. <br /><br />Have consideration for others when choosing to smoke.
 [Stealth Warning] <br />You are about to embark on a stealth <br />mission. Your objective is to make <br />your way to the goal while avoiding <br />enemy detection.
 Enemy soldiers will use sight, sound and <br />smell to detect you. Upon detection, they <br />will attack. Excessive noise, reckless <br />behavior, or getting to close to the <br />enemy can have severe consequences.
-[Changing Position] <br />Crouching and lying flat are effective <br />methods of avoiding enemy detection. <br />Tap the âœ– button to crouch. <br />Hold the âœ– button to lie down. <br />To stand up from a lying position, <br />press and hold the âœ– button.
+[Changing Position] <br />Crouching and lying flat are effective <br />methods of avoiding enemy detection. <br />Tap the X button to crouch. <br />Hold the X button to lie down. <br />To stand up from a lying position, <br />press and hold the X button.
 [OctoCamo] <br />The OctoCamo sneaking suit enables <br />you to blend in with your surroundings. <br />Press up against a wall, or lie down and <br />stay still to activate OctoCamo. Your <br />suit will then match the color and pattern <br />of your environment, making it harder for <br />enemies to detect you.
 [Stay in Control] <br />You can view the game controls at any <br />time by pressing the SELECT button.
 [Expand Your Move Set] <br />Press the START button when in <br />the game to bring up the Pause Menu, <br />then select "Briefing" to view <br />detailed descriptions of both basic and <br />advanced in-game actions.
 Use the Pause Menu to equip weapons, <br />purchase items, and save your game. <br /><br />The Pause Menu has many functions, <br />all of which are critical to your mission. <br />Use it to your advantage.
 [Health Warning] <br />Ensure that you play in a brightly lit room <br />and sit as far away from the screen as <br />possible.
-METAL GEAR SOLID 4: GUNS OF THE PATRIOTS <br />will launch on PLAYSTATIONÂ®5, XBOX SERIES X|S, <br />Nintendo Switchâ„¢ 2, Nintendo Switchâ„¢, and SteamÂ® <br />on August 27, 2026.
+METAL GEAR SOLID 4: GUNS OF THE PATRIOTS <br />will launch on PLAYSTATION®5, XBOX SERIES X|S, <br />Nintendo Switch® 2, Nintendo Switch®, and Steam® <br />on August 27, 2026.
